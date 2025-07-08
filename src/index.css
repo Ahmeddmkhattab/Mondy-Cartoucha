@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Egyptian-style background pattern */
+.bg-pattern {
+  background: linear-gradient(135deg, #fef7cd 0%, #f7e98e 25%, #f4e27c 50%, #f0d959 75%, #edc843 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  position: relative;
+}
+
+.bg-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(184, 134, 11, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(218, 165, 32, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 40% 60%, rgba(139, 69, 19, 0.05) 0%, transparent 30%);
+  background-size: 80px 80px, 120px 120px, 100px 100px;
+  background-position: 0 0, 40px 40px, 20px 60px;
+  animation: patternMove 20s linear infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes patternMove {
+  0% { background-position: 0 0, 40px 40px, 20px 60px; }
+  100% { background-position: 80px 80px, 120px 120px, 100px 160px; }
+}
+
+/* Modern card styling */
+.modern-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(218, 165, 32, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(135deg, #8B4513 0%, #DAA520 50%, #FFD700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Modern button styling */
+.modern-btn {
+  background: linear-gradient(135deg, #DAA520 0%, #FFD700 100%);
+  box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+  transition: all 0.3s ease;
+}
+
+.modern-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(218, 165, 32, 0.4);
+}
+
+/* make animations - subtitle first, then title */
+.subtitle-animate {
+  animation: slideDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+.title-animate {
+  animation: slideDown 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+  will-change: transform, opacity;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(5px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Footer animations */
+.footer-animate {
+  animation: slideUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  will-change: transform, opacity;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-5px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Placeholder content animation */
+.placeholder-animate {
+  animation: fadeIn 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+  will-change: transform, opacity;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(-5px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Enhanced smooth transitions */
+* {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Prevent layout shifts during animations */
+.header-animate,
+.footer-animate,
+.placeholder-animate {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+/* Custom scrollbar styling for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(218, 165, 32, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(218, 165, 32, 0.8);
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(218, 165, 32, 0.5) rgba(0, 0, 0, 0.1);
+}
+
+/* Custom text styling */
+.subtitle-text {
+  font-size: 1.75rem; /* Bigger than default xl */
+  font-weight: 700; /* Bold */
+}
+
+.footer-text {
+  font-size: 1rem; /* Bigger than default xs */
+  font-weight: 700; /* Bold */
+  text-decoration: none; /* Remove underline */
+  color: #000000; /* Black color like header */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.footer-text:hover {
+  text-decoration: none; /* Ensure no underline on hover */
+  color: #DAA520; /* Golden color matching the background theme */
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
