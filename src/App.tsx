@@ -1,25 +1,57 @@
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import cartouchaVideo from './assets/cartoucha.mp4';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time and wait for video to be ready
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // 3 seconds loading time
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="min-h-screen flex flex-col bg-pattern">
-      <Header />
-      
-      <main className="flex-1 flex items-center justify-center p-8">
-        <div className="placeholder-animate text-center">
-          <div className="modern-card rounded-2xl p-12 max-w-2xl">
-           
-            <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
-              <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 h-2 rounded-full w-3/4"></div>
-            </div>
-            
-          </div>
+    <>
+      {/* Loading Screen */}
+      {isLoading && (
+        <div className="loading-screen">
+          <div className="loading-spinner"></div>
+          <div className="loading-text">Loading Cartoucha...</div>
         </div>
-      </main>
-      
-      <Footer />
-    </div>
+      )}
+
+      {/* Video Background */}
+      <div className="video-background">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          onLoadedData={() => {
+            // Video is ready, but we still wait for the timer
+          }}
+        >
+          <source src={cartouchaVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      {/* Main Content */}
+      <div className={`min-h-screen flex flex-col transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+        <Header />
+        
+        <main className="flex-1">
+          {/* Empty main content area */}
+        </main>
+        
+        <Footer />
+      </div>
+    </>
   );
 }
 
