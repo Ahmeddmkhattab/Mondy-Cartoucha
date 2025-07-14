@@ -572,19 +572,6 @@ html {
   transform: translateY(-50%) scale(1.1);
 }
 
-/* Symbol Selection Styles */
-.symbol-selection-section {
-  margin: 1.5rem 0;
-}
-
-.symbol-label {
-  font-weight: 600;
-  color: #8B4513;
-  font-size: 1rem;
-  margin-bottom: 0.75rem;
-  display: block;
-}
-
 .symbol-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

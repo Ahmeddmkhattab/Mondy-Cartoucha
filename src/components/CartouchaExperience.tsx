@@ -206,8 +206,8 @@ const CartouchaExperience = () => {
                     </div>
 
                     {/* Symbol Selection Section */}
-                    <div className="symbol-selection-section">
-                        <label className="symbol-label">Choose a blessing</label>
+                    <div className="input-group">
+                        <label className="input-label">Choose a blessing</label>
                         <div className="symbol-grid">
                             {Object.keys(symbolMap).map((symbol) => (
                                 <button
@@ -222,7 +222,7 @@ const CartouchaExperience = () => {
                         </div>
                     </div>
 
-                    <div className="translator-output-section">
+                    {/* <div className="translator-output-section">
                         <div className="output-group">
                             <label className="output-label">Your name in hieroglyphs</label>
                             <div className="hieroglyph-display">
@@ -233,7 +233,7 @@ const CartouchaExperience = () => {
                                 )}
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
