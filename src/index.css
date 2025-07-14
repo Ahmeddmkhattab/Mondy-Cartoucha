@@ -871,7 +871,7 @@ html {
   }
 
   .glass-footer-content {
-    height: 3.5rem;
+    height: 2.2rem;
   }
 
   .glass-footer-link {
@@ -960,18 +960,18 @@ html {
 
   /* Header becomes more compact */
   .glass-header-title {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 
   .glass-header-content {
-    height: 3.5rem;
+    height: 2.5rem;
     border-radius: 0 0 1rem 1rem;
   }
 
   /* Main layout adjustments */
   .cartoucha-experience {
     padding: 0.75rem 0.25rem;
-    margin-top: 3rem;
+    margin-top: 1rem;
   }
 
   .translator-card {
