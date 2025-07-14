@@ -41,9 +41,18 @@ function Model({ mousePosition, isLocked }: ModelProps) {
 const CartouchaExperience = () => {
     const [inputName, setInputName] = useState('');
     const [hieroglyphResult, setHieroglyphResult] = useState('');
+    const [selectedSymbol, setSelectedSymbol] = useState<string | null>(null);
     const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
     const [isInputFocused, setIsInputFocused] = useState(false);
     const [isTouching, setIsTouching] = useState(false);
+
+    // Egyptian symbols mapping
+    const symbolMap = {
+        'Love': '𓆸',        // Lotus flower (corrected)
+        'Luck': '𓆣',        // Sacred scarab beetle (corrected)
+        'Protection': '𓂀',   // Eye of Horus
+        'Long Life': '𓋹'     // Ankh
+    };
 
     const transliterateToHieroglyphs = (inputName: string) => {
         const hieroglyphMap: { [key: string]: string } = {
@@ -55,8 +64,17 @@ const CartouchaExperience = () => {
         };
 
         const digraphs = ["KH", "SH", "CH", "PH", "TH"];
-        const name = inputName.toUpperCase()
+        let name = inputName.toUpperCase()
             .replace(/C/g, "K").replace(/Q/g, "K").replace(/X/g, "KH").replace(/V/g, "F");
+
+        // Remove consecutive duplicate letters
+        let deduplicatedName = "";
+        for (let i = 0; i < name.length; i++) {
+            if (i === 0 || name[i] !== name[i - 1]) {
+                deduplicatedName += name[i];
+            }
+        }
+        name = deduplicatedName;
 
         let result = "";
         for (let i = 0; i < name.length; i++) {
@@ -72,14 +90,35 @@ const CartouchaExperience = () => {
         return result;
     };
 
+    const updateHieroglyphResult = (name: string, symbol: string | null) => {
+        const nameHieroglyphs = name.trim() ? transliterateToHieroglyphs(name) : '';
+        const symbolHieroglyph = symbol ? symbolMap[symbol as keyof typeof symbolMap] : '';
+
+        if (nameHieroglyphs && symbolHieroglyph) {
+            return nameHieroglyphs + '  ︎ ' + symbolHieroglyph;
+        } else if (nameHieroglyphs) {
+            return nameHieroglyphs;
+        } else if (symbolHieroglyph) {
+            return symbolHieroglyph;
+        }
+        return '';
+    };
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setInputName(value);
-        setHieroglyphResult(value.trim() ? transliterateToHieroglyphs(value) : '');
+        setHieroglyphResult(updateHieroglyphResult(value, selectedSymbol));
+    };
+
+    const handleSymbolSelect = (symbol: string) => {
+        const newSymbol = selectedSymbol === symbol ? null : symbol;
+        setSelectedSymbol(newSymbol);
+        setHieroglyphResult(updateHieroglyphResult(inputName, newSymbol));
     };
 
     const handleClearInput = () => {
         setInputName('');
+        setSelectedSymbol(null);
         setHieroglyphResult('');
     };
 
@@ -157,12 +196,29 @@ const CartouchaExperience = () => {
                                     onBlur={() => setIsInputFocused(false)}
                                     placeholder="Type your name here..."
                                     className="name-input"
-                                    maxLength={7}
+                                    maxLength={8}
                                 />
                                 {inputName && (
                                     <button onClick={handleClearInput} className="clear-button" title="Clear input">×</button>
                                 )}
                             </div>
+                        </div>
+                    </div>
+
+                    {/* Symbol Selection Section */}
+                    <div className="symbol-selection-section">
+                        <label className="symbol-label">Choose a blessing</label>
+                        <div className="symbol-grid">
+                            {Object.keys(symbolMap).map((symbol) => (
+                                <button
+                                    key={symbol}
+                                    onClick={() => handleSymbolSelect(symbol)}
+                                    className={`symbol-box ${selectedSymbol === symbol ? 'selected' : ''}`}
+                                >
+                                    <span className="symbol-hieroglyph">{symbolMap[symbol as keyof typeof symbolMap]}</span>
+                                    <span className="symbol-name">{symbol}</span>
+                                </button>
+                            ))}
                         </div>
                     </div>
 

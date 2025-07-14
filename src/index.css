@@ -572,6 +572,156 @@ html {
   transform: translateY(-50%) scale(1.1);
 }
 
+/* Symbol Selection Styles */
+.symbol-selection-section {
+  margin: 1.5rem 0;
+}
+
+.symbol-label {
+  font-weight: 600;
+  color: #8B4513;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.symbol-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.symbol-box {
+  background: rgba(251, 191, 36, 0.08);
+  border: 2px solid rgba(251, 191, 36, 0.2);
+  border-radius: 1rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.symbol-box:hover {
+  background: rgba(251, 191, 36, 0.15);
+  border-color: rgba(251, 191, 36, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(251, 191, 36, 0.2);
+}
+
+.symbol-box.selected {
+  background: rgba(251, 191, 36, 0.25);
+  border-color: #DAA520;
+  box-shadow: 0 0 20px rgba(218, 165, 32, 0.4);
+}
+
+.symbol-box.selected::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(218, 165, 32, 0.1) 100%);
+  pointer-events: none;
+}
+
+.symbol-hieroglyph {
+  font-size: 2rem;
+  color: #8B4513;
+  text-shadow:
+    0 0 8px rgba(255, 215, 0, 0.6),
+    0 0 16px rgba(255, 215, 0, 0.4);
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.6));
+  transition: all 0.3s ease;
+}
+
+.symbol-box:hover .symbol-hieroglyph {
+  text-shadow:
+    0 0 12px rgba(255, 215, 0, 0.8),
+    0 0 24px rgba(255, 215, 0, 0.6);
+  transform: scale(1.1);
+}
+
+.symbol-box.selected .symbol-hieroglyph {
+  text-shadow:
+    0 0 15px rgba(255, 215, 0, 1),
+    0 0 30px rgba(255, 215, 0, 0.8);
+  animation: symbolGlow 2s ease-in-out infinite alternate;
+}
+
+.symbol-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #8B4513;
+  text-align: center;
+  line-height: 1.2;
+  transition: all 0.3s ease;
+}
+
+.symbol-box:hover .symbol-name {
+  color: #654321;
+}
+
+.symbol-box.selected .symbol-name {
+  color: #5D4037;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+}
+
+@keyframes symbolGlow {
+  from {
+    text-shadow:
+      0 0 15px rgba(255, 215, 0, 1),
+      0 0 30px rgba(255, 215, 0, 0.8);
+  }
+
+  to {
+    text-shadow:
+      0 0 20px rgba(255, 215, 0, 1),
+      0 0 40px rgba(255, 215, 0, 0.9),
+      0 0 60px rgba(255, 215, 0, 0.7);
+  }
+}
+
+/* Mobile responsiveness for symbol selection */
+@media (max-width: 640px) {
+  .symbol-grid {
+    gap: 0.5rem;
+  }
+
+  .symbol-box {
+    padding: 0.75rem 0.5rem;
+    min-height: 3.5rem;
+  }
+
+  .symbol-hieroglyph {
+    font-size: 1.5rem;
+  }
+
+  .symbol-name {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .symbol-hieroglyph {
+    font-size: 1.25rem;
+  }
+
+  .symbol-name {
+    font-size: 0.65rem;
+  }
+
+  .symbol-box {
+    min-height: 3rem;
+  }
+}
+
 .translator-output-section {
   margin-top: 2rem;
 }
@@ -601,8 +751,8 @@ html {
 }
 
 .hieroglyph-text {
-  font-size: 2.5rem;
-  font-weight: 400;
+  font-size: 2.6rem;
+  font-weight: 900;
   color: #8B4513;
   text-shadow:
     0 0 12px rgba(255, 215, 0, 0.9),
