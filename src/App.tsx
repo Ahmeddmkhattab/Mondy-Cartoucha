@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import cartouchaVideo from './assets/cartoucha.mp4';
+import CartouchaExperience from './components/CartouchaExperience';
+import cartouchaVideo from './assets/cartoucha-optimized.mp4';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -44,11 +45,14 @@ function App() {
       {/* Main Content */}
       <div className={`min-h-screen flex flex-col transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <Header />
-        
-        <main className="flex-1">
-          {/* Empty main content area */}
-        </main>
-        
+
+        {/* Cartoucha Experience - Integrated translator and 3D model */}
+        {!isLoading && (
+          <main className="flex-1">
+            <CartouchaExperience />
+          </main>
+        )}
+
         <Footer />
       </div>
     </>

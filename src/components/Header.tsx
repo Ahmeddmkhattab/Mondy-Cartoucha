@@ -1,17 +1,15 @@
 const Header = () => {
-  return (
-    <header className="relative overflow-hidden">
-      <div className="border-b-2 border-yellow-400">
-        <div className="container mx-auto px-4 py-8">
-          <div className="text-left">
-            <h1 className="cartoucha-title title-animate">
-              Cartoucha
-            </h1>
-          </div>
-        </div>
-      </div>
-    </header>
-  );
+    return (
+        <header className="glass-header">
+            <div className="glass-header-content">
+                <div>
+                    <h1 className="cartoucha-title glass-header-title">
+                        Cartoucha
+                    </h1>
+                </div>
+            </div>
+        </header>
+    );
 };
 
-export default Header;
+export default Header; 

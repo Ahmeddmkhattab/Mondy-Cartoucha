@@ -2,10 +2,116 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import custom fonts */
-@import url('/fonts/bigger-display.css');
-@import url('/fonts/editorial-new.css');
-@import url('/fonts/fraktion-mono.css');
+/* Header and Footer Glass Blur Styles */
+.glass-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 0 1rem;
+}
+
+/* 3D Model Container */
+.model-3d-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.model-3d-container canvas {
+  pointer-events: auto;
+}
+
+@media (min-width: 768px) {
+  .model-3d-container {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .model-3d-container {
+    width: 600px;
+    height: 600px;
+  }
+}
+
+.glass-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5rem;
+  background: rgba(251, 191, 36, 0.1);
+  backdrop-filter: blur(24px);
+  border-radius: 0 0 1.5rem 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(251, 191, 36, 0.2);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+.glass-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 0 1rem;
+}
+
+.glass-footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  background: rgba(251, 191, 36, 0.1);
+  backdrop-filter: blur(24px);
+  border-radius: 1.5rem 1.5rem 0 0;
+  box-shadow: 0 -25px 50px -12px rgba(251, 191, 36, 0.2);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+.glass-footer-link {
+  text-align: center;
+  color: rgb(253, 224, 71);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.4));
+  text-decoration: none;
+}
+
+.glass-footer-link:hover {
+  color: rgb(254, 240, 138);
+}
+
+@media (min-width: 640px) {
+  .glass-header-title {
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .glass-header-title {
+    font-size: 5rem;
+  }
+
+  .glass-header {
+    padding: 0 2rem;
+  }
+
+  .glass-footer {
+    padding: 0 2rem;
+  }
+}
 
 /* Video background styling */
 .video-background {
@@ -57,8 +163,13 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-text {
@@ -111,10 +222,12 @@
     transform: translateY(-100px);
     opacity: 0;
   }
+
   60% {
     transform: translateY(5px);
     opacity: 0.8;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
@@ -132,10 +245,12 @@
     transform: translateY(60px);
     opacity: 0;
   }
+
   60% {
     transform: translateY(-5px);
     opacity: 0.8;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
@@ -153,10 +268,12 @@
     opacity: 0;
     transform: translateY(30px) scale(0.95);
   }
+
   60% {
     opacity: 0.8;
     transform: translateY(-5px) scale(1.01);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -182,7 +299,8 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   scroll-behavior: smooth;
-  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-x: hidden;
+  /* Hide horizontal scrollbar */
 }
 
 /* Custom scrollbar styling for webkit browsers */
@@ -211,53 +329,41 @@ html {
 
 /* Custom text styling */
 .subtitle-text {
-  font-size: 1.75rem; /* Bigger than default xl */
-  font-weight: 700; /* Bold */
+  font-size: 1.75rem;
+  /* Bigger than default xl */
+  font-weight: 700;
+  /* Bold */
 }
 
 .footer-text {
-  font-size: 1rem; /* Keep the same size */
-  font-weight: 700; /* Bold */
-  text-decoration: none; /* Remove underline */
+  font-size: 1rem;
+  /* Keep the same size */
+  font-weight: 700;
+  /* Bold */
+  text-decoration: none;
+  /* Remove underline */
   background: linear-gradient(135deg, #FFD700 0%, #DAA520 50%, #B8860B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  transition: filter 0.3s ease; /* Smooth transition for hover effect */
+  transition: filter 0.3s ease;
+  /* Smooth transition for hover effect */
   filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.6));
 }
 
 .footer-text:hover {
-  text-decoration: none; /* Ensure no underline on hover */
+  text-decoration: none;
+  /* Ensure no underline on hover */
   filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.8)) brightness(1.2);
 }
 
-/* Custom header styling for Cartoucha title - Option 1: White with black stroke and shadow */
-/*
-.cartoucha-title {
-  font-family: 'Bigger Display', serif;
-  font-size: 4rem;
-  font-weight: normal;
-  color: #ffffff;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  -webkit-text-stroke: 2px #000000;
-  text-stroke: 2px #000000;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-}
-*/
-
-/* Alternative color options - uncomment one to try */
 
 /* Option 2: Gold gradient without black stroke (Current) */
 .cartoucha-title {
-  font-family: 'Bigger Display', serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   font-size: 4rem;
   font-weight: normal;
-  background: linear-gradient(135deg, #FFD700 0%, #DAA520 50%, #B8860B 100%);
+  background: linear-gradient(135deg, #C2B280 0%, #dfb64e 50%, #B8860B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -266,95 +372,365 @@ html {
   padding: 0;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8));
+  filter: drop-shadow(2px 2px 4px rgba(70, 58, 2, 0.8));
   transition: filter 0.3s ease;
   cursor: pointer;
 }
 
 .cartoucha-title:hover {
-  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8)) 
-          drop-shadow(0 0 10px rgba(255, 215, 0, 0.4)) 
-          drop-shadow(0 0 20px rgba(255, 215, 0, 0.3)) 
-          drop-shadow(0 0 30px rgba(255, 215, 0, 0.2));
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 10px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.3)) drop-shadow(0 0 30px rgba(255, 215, 0, 0.2));
 }
-
-/* Option 3: Black text with white outline and glow */
-/*
-.cartoucha-title {
-  font-family: 'Bigger Display', serif;
-  font-size: 4rem;
-  font-weight: normal;
-  color: #000000;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  -webkit-text-stroke: 2px #ffffff;
-  text-stroke: 2px #ffffff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
-}
-*/
-
-/* Option 4: Pure white with multiple shadows for maximum contrast */
-/*
-.cartoucha-title {
-  font-family: 'Bigger Display', serif;
-  font-size: 4rem;
-  font-weight: normal;
-  color: #ffffff;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  text-shadow: 
-    2px 2px 0 #000000,
-    -2px -2px 0 #000000,
-    2px -2px 0 #000000,
-    -2px 2px 0 #000000,
-    0 0 10px rgba(0, 0, 0, 0.8);
-}
-*/
-
-/* Option 5: Golden yellow with dark outline */
-/*
-.cartoucha-title {
-  font-family: 'Bigger Display', serif;
-  font-size: 4rem;
-  font-weight: normal;
-  color: #FFD700;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  -webkit-text-stroke: 2px #2B1810;
-  text-stroke: 2px #2B1810;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
-}
-*/
-
-/* Option 6: Cream with brown outline (sophisticated) */
-/*
-.cartoucha-title {
-  font-family: 'Bigger Display', serif;
-  font-size: 4rem;
-  font-weight: normal;
-  color: #FFF8DC;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  -webkit-text-stroke: 2px #8B4513;
-  text-stroke: 2px #8B4513;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-}
-*/
 
 #root {
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden; /* Prevent horizontal overflow */
+  overflow-x: hidden;
+  /* Prevent horizontal overflow */
+}
+
+/* Cartoucha Experience Layout */
+.cartoucha-experience {
+  display: flex;
+  min-height: calc(100vh - 9rem);
+  padding: 2rem 4rem;
+  gap: 1rem;
+}
+
+.translator-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
+}
+
+.model-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 600px;
+}
+
+.model-3d-container-large {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  max-width: 800px;
+}
+
+.model-3d-container-large canvas {
+  pointer-events: auto;
+}
+
+/* Text Overlay on 3D Model */
+.text-overlay {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.vertical-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 1rem 0;
+}
+
+.text-char {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #8B4513;
+  text-shadow:
+    0 0 10px rgba(255, 215, 0, 0.8),
+    0 0 20px rgba(255, 215, 0, 0.6),
+    0 0 30px rgba(255, 215, 0, 0.4);
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8));
+  animation: textGlow 2s ease-in-out infinite alternate;
+  letter-spacing: 0.1rem;
+}
+
+.hieroglyph-text {
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #8B4513;
+  text-shadow:
+    0 0 12px rgba(255, 215, 0, 0.9),
+    0 0 24px rgba(255, 215, 0, 0.7),
+    0 0 36px rgba(255, 215, 0, 0.5);
+  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.9));
+  animation: hieroglyphGlow 2.5s ease-in-out infinite alternate;
+  letter-spacing: 0.2rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+@keyframes hieroglyphGlow {
+  from {
+    text-shadow:
+      0 0 12px rgba(255, 215, 0, 0.9),
+      0 0 24px rgba(255, 215, 0, 0.7),
+      0 0 36px rgba(255, 215, 0, 0.5);
+  }
+
+  to {
+    text-shadow:
+      0 0 18px rgba(255, 215, 0, 1),
+      0 0 36px rgba(255, 215, 0, 0.9),
+      0 0 54px rgba(255, 215, 0, 0.7);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .cartoucha-experience {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .translator-section {
+    max-width: 100%;
+  }
+
+  .model-section {
+    min-height: 400px;
+  }
+
+  .model-3d-container-large {
+    height: 400px;
+  }
+
+  .text-char {
+    font-size: 1.5rem;
+  }
+
+  .hieroglyph-text {
+    font-size: 2rem;
+  }
+
+  .text-overlay {
+    top: 42%;
+  }
+}
+
+@media (max-width: 640px) {
+  .cartoucha-experience {
+    padding: 1rem;
+  }
+
+  .model-3d-container-large {
+    height: 300px;
+  }
+
+  .text-char {
+    font-size: 1.2rem;
+    gap: 0.3rem;
+  }
+
+  .hieroglyph-text {
+    font-size: 1.5rem;
+  }
+
+  .text-overlay {
+    top: 40%;
+  }
+
+  .vertical-text {
+    gap: 0.2rem;
+  }
+}
+
+/* Hieroglyph Translator Styles */
+.hieroglyph-translator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 9rem);
+  padding: 2rem 1rem;
+  z-index: 50;
+  animation: fadeIn 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+}
+
+.translator-card {
+  background: rgba(251, 191, 36, 0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  border-radius: 2rem;
+  box-shadow: 0 -25px 50px -12px rgba(251, 191, 36, 0.2);
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  transition: all 0.3s ease;
+}
+
+.translator-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 35px 70px -12px rgba(251, 191, 36, 0.3);
+}
+
+.translator-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.translator-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #8B4513 0%, #755c1c 50%, #403700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.3));
+}
+
+.translator-input-section {
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 90%;
+}
+
+.input-label {
+  font-weight: 600;
+  color: #8B4513;
+  font-size: 1rem;
+}
+
+.input-container {
+  position: relative;
+}
+
+.name-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: 2px solid rgba(251, 191, 36, 0.3);
+  border-radius: 1rem;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  color: #8B4513;
+  font-weight: 500;
+}
+
+.name-input:focus {
+  outline: none;
+  border-color: #DAA520;
+  box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.1);
+  transform: translateY(-2px);
+}
+
+.name-input::placeholder {
+  color: rgba(139, 69, 19, 0.5);
+}
+
+.clear-button {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(218, 165, 32, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  color: #8B4513;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear-button:hover {
+  background: rgba(218, 165, 32, 0.2);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.translator-output-section {
+  margin-top: 2rem;
+}
+
+.output-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.output-label {
+  font-weight: 600;
+  color: #8B4513;
+  font-size: 1rem;
+}
+
+.hieroglyph-display {
+  background: rgba(251, 191, 36, 0.1);
+  border: 2px solid rgba(251, 191, 36, 0.3);
+  border-radius: 1rem;
+  padding: 2rem;
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.hieroglyph-text {
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #8B4513;
+  text-shadow:
+    0 0 12px rgba(255, 215, 0, 0.9),
+    0 0 24px rgba(255, 215, 0, 0.7),
+    0 0 36px rgba(255, 215, 0, 0.5);
+  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.9));
+  animation: hieroglyphGlow 2.5s ease-in-out infinite alternate;
+  letter-spacing: 0.2rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.placeholder-text {
+  color: rgba(139, 69, 19, 0.5);
+  font-size: 1.1rem;
+  font-style: italic;
+  text-align: center;
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.4));
+  }
+
+  to {
+    filter: drop-shadow(0 0 16px rgba(251, 191, 36, 0.6));
+  }
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .translator-card {
+    padding: 2rem;
+    margin: 1rem;
+  }
+
+  .translator-title {
+    font-size: 2rem;
+  }
+
+  .hieroglyph-text {
+    font-size: 2.5rem;
+  }
 }
