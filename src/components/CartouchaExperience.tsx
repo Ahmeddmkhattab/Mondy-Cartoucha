@@ -43,6 +43,7 @@ const CartouchaExperience = () => {
     const [hieroglyphResult, setHieroglyphResult] = useState('');
     const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
     const [isInputFocused, setIsInputFocused] = useState(false);
+    const [isTouching, setIsTouching] = useState(false);
 
     const transliterateToHieroglyphs = (inputName: string) => {
         const hieroglyphMap: { [key: string]: string } = {
@@ -82,27 +83,67 @@ const CartouchaExperience = () => {
         setHieroglyphResult('');
     };
 
+    const updatePosition = (x: number, y: number) => {
+        setMousePosition({
+            x: x / window.innerWidth,
+            y: y / window.innerHeight,
+        });
+    };
+
     useEffect(() => {
         const handleMouseMove = (event: MouseEvent) => {
-            setMousePosition({
-                x: event.clientX / window.innerWidth,
-                y: event.clientY / window.innerHeight,
-            });
+            if (!isTouching) { // Only update from mouse if not currently touching
+                updatePosition(event.clientX, event.clientY);
+            }
         };
 
+        const handleTouchStart = (event: TouchEvent) => {
+            setIsTouching(true);
+            const touch = event.touches[0];
+            if (touch) {
+                updatePosition(touch.clientX, touch.clientY);
+            }
+            // Add body class to prevent scrolling
+            document.body.classList.add('touch-active');
+        };
+
+        const handleTouchMove = (event: TouchEvent) => {
+            event.preventDefault();
+            const touch = event.touches[0];
+            if (touch) {
+                updatePosition(touch.clientX, touch.clientY);
+            }
+        };
+
+        const handleTouchEnd = () => {
+            setIsTouching(false);
+            // Remove body class to restore scrolling
+            document.body.classList.remove('touch-active');
+        };
+
+        // Add event listeners
         window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
+        window.addEventListener('touchstart', handleTouchStart, { passive: false });
+        window.addEventListener('touchmove', handleTouchMove, { passive: false });
+        window.addEventListener('touchend', handleTouchEnd);
+
+        return () => {
+            // Remove event listeners
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('touchstart', handleTouchStart);
+            window.removeEventListener('touchmove', handleTouchMove);
+            window.removeEventListener('touchend', handleTouchEnd);
+
+            // Clean up body class
+            document.body.classList.remove('touch-active');
+        };
+    }, [isTouching]);
 
     return (
         <div className="cartoucha-experience">
             {/* Left Side - Hieroglyph Translator */}
             <div className="translator-section">
                 <div className="translator-card">
-                    <div className="translator-header">
-                        <h2 className="translator-title">Hieroglyphic Name</h2>
-                    </div>
-
                     <div className="translator-input-section">
                         <div className="input-group">
                             <label htmlFor="name-input" className="input-label">Enter your name</label>
@@ -167,15 +208,15 @@ const CartouchaExperience = () => {
                     {/* Text Overlay - Vertical text on the model */}
                     {hieroglyphResult && (
                         <div className="text-overlay">
-                            <div 
+                            <div
                                 className="vertical-text"
                                 style={{
                                     gap: `${Math.max(0.2, 0.5 - (hieroglyphResult.split(' ').filter(char => char.trim()).length * 0.05))}rem`
                                 }}
                             >
                                 {hieroglyphResult.split(' ').filter(char => char.trim()).map((char, index) => (
-                                    <span 
-                                        key={index} 
+                                    <span
+                                        key={index}
                                         className="hieroglyph-text"
                                     >
                                         {char}

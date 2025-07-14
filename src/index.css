@@ -416,7 +416,7 @@ html {
 .model-3d-container-large {
   position: relative;
   width: 100%;
-  height: 700px;
+  height: 600px;
   max-width: 800px;
 }
 
@@ -469,108 +469,6 @@ html {
   flex-shrink: 1;
 }
 
-@keyframes textGlow {
-  from {
-    text-shadow:
-      0 0 10px rgba(255, 215, 0, 0.8),
-      0 0 20px rgba(255, 215, 0, 0.6),
-      0 0 30px rgba(255, 215, 0, 0.4);
-  }
-  to {
-    text-shadow:
-      0 0 15px rgba(255, 215, 0, 1),
-      0 0 30px rgba(255, 215, 0, 0.8),
-      0 0 45px rgba(255, 215, 0, 0.6);
-  }
-}
-
-.hieroglyph-text {
-  font-size: 1.6rem;
-  font-weight: 400;
-  color: #8B4513;
-  text-shadow:
-    0 0 10px rgba(255, 215, 0, 0.9),
-    0 0 20px rgba(255, 215, 0, 0.7),
-    0 0 30px rgba(255, 215, 0, 0.5);
-  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.9));
-  animation: hieroglyphGlow 2.5s ease-in-out infinite alternate;
-  letter-spacing: 0.05rem;
-  text-align: center;
-  line-height: 1;
-  flex-shrink: 0;
-  white-space: nowrap;
-}
-
-@keyframes hieroglyphGlow {
-  from {
-    text-shadow:
-      0 0 12px rgba(255, 215, 0, 0.9),
-      0 0 24px rgba(255, 215, 0, 0.7),
-      0 0 36px rgba(255, 215, 0, 0.5);
-  }
-
-  to {
-    text-shadow:
-      0 0 18px rgba(255, 215, 0, 1),
-      0 0 36px rgba(255, 215, 0, 0.9),
-      0 0 54px rgba(255, 215, 0, 0.7);
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .cartoucha-experience {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .translator-section {
-    max-width: 100%;
-  }
-
-  .model-section {
-    min-height: 400px;
-  }
-
-  .model-3d-container-large {
-    height: 400px;
-  }
-
-  .text-overlay {
-    max-width: 180px;
-    max-height: 240px;
-    top: 60%;
-  }
-
-  .hieroglyph-text {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .cartoucha-experience {
-    padding: 1rem;
-  }
-
-  .model-3d-container-large {
-    height: 300px;
-  }
-
-  .text-overlay {
-    max-width: 130px;
-    max-height: 176px;
-    top: 60%;
-  }
-
-  .hieroglyph-text {
-    font-size: 1rem;
-  }
-
-  .vertical-text {
-    padding: 0.3rem 0;
-  }
-}
-
 /* Hieroglyph Translator Styles */
 .hieroglyph-translator {
   display: flex;
@@ -603,17 +501,6 @@ html {
 .translator-header {
   text-align: center;
   margin-bottom: 2rem;
-}
-
-.translator-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #8B4513 0%, #755c1c 50%, #403700 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.3));
 }
 
 .translator-input-section {
@@ -745,18 +632,310 @@ html {
   }
 }
 
-/* Responsive design */
-@media (max-width: 640px) {
-  .translator-card {
-    padding: 2rem;
-    margin: 1rem;
+@keyframes textGlow {
+  from {
+    text-shadow:
+      0 0 10px rgba(255, 215, 0, 0.8),
+      0 0 20px rgba(255, 215, 0, 0.6),
+      0 0 30px rgba(255, 215, 0, 0.4);
   }
 
-  .translator-title {
-    font-size: 2rem;
+  to {
+    text-shadow:
+      0 0 15px rgba(255, 215, 0, 1),
+      0 0 30px rgba(255, 215, 0, 0.8),
+      0 0 45px rgba(255, 215, 0, 0.6);
+  }
+}
+
+.hieroglyph-text {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #8B4513;
+  text-shadow:
+    0 0 10px rgba(255, 215, 0, 0.9),
+    0 0 20px rgba(255, 215, 0, 0.7),
+    0 0 30px rgba(255, 215, 0, 0.5);
+  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.9));
+  animation: hieroglyphGlow 2.5s ease-in-out infinite alternate;
+  letter-spacing: 0.05rem;
+  text-align: center;
+  line-height: 1;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+@keyframes hieroglyphGlow {
+  from {
+    text-shadow:
+      0 0 12px rgba(255, 215, 0, 0.9),
+      0 0 24px rgba(255, 215, 0, 0.7),
+      0 0 36px rgba(255, 215, 0, 0.5);
+  }
+
+  to {
+    text-shadow:
+      0 0 18px rgba(255, 215, 0, 1),
+      0 0 36px rgba(255, 215, 0, 0.9),
+      0 0 54px rgba(255, 215, 0, 0.7);
+  }
+}
+
+/* Mobile-first responsive adjustments */
+@media (max-width: 1024px) {
+  .cartoucha-experience {
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+    min-height: auto;
+  }
+
+  .translator-section {
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .model-section {
+    min-height: 400px;
+  }
+
+  .model-3d-container-large {
+    height: 400px;
+  }
+
+  .text-overlay {
+    max-width: 180px;
+    max-height: 240px;
+    top: 60%;
   }
 
   .hieroglyph-text {
-    font-size: 2.5rem;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Header adjustments */
+  .glass-header {
+    padding: 0 0.5rem;
+  }
+
+  .glass-header-content {
+    height: 4rem;
+  }
+
+  .glass-header-title {
+    font-size: 2rem;
+  }
+
+  /* Footer adjustments */
+  .glass-footer {
+    padding: 0 0.5rem;
+  }
+
+  .glass-footer-content {
+    height: 3.5rem;
+  }
+
+  .glass-footer-link {
+    font-size: 0.75rem;
+  }
+
+  /* Main content adjustments */
+  .cartoucha-experience {
+    padding: 1rem 0.75rem;
+    min-height: calc(100vh - 7.5rem);
+  }
+
+  .translator-card {
+    padding: 1.5rem;
+    margin: 0 0.5rem;
+  }
+
+  .model-3d-container-large {
+    height: 350px;
+    margin: 0 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .cartoucha-experience {
+    padding: 1rem 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .model-3d-container-large {
+    height: 300px;
+  }
+
+  .text-overlay {
+    max-width: 130px;
+    max-height: 176px;
+    top: 60%;
+  }
+
+  .hieroglyph-text {
+    font-size: 1rem;
+  }
+
+  .vertical-text {
+    padding: 0.3rem 0;
+  }
+
+  /* Translator card mobile optimization */
+  .translator-card {
+    padding: 1rem;
+    border-radius: 1.5rem;
+  }
+
+  .translator-header {
+    margin-bottom: 1rem;
+  }
+
+  .input-label,
+  .output-label {
+    font-size: 0.875rem;
+  }
+
+  .name-input {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .hieroglyph-display {
+    min-height: 3rem;
+    padding: 0.75rem;
+  }
+
+  .placeholder-text {
+    font-size: 0.875rem;
+  }
+
+  /* Ensure proper spacing on very small screens */
+  .translator-input-section,
+  .translator-output-section {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Extra small devices (phones in portrait) */
+@media (max-width: 480px) {
+
+  /* Header becomes more compact */
+  .glass-header-title {
+    font-size: 1.75rem;
+  }
+
+  .glass-header-content {
+    height: 3.5rem;
+    border-radius: 0 0 1rem 1rem;
+  }
+
+  /* Main layout adjustments */
+  .cartoucha-experience {
+    padding: 0.75rem 0.25rem;
+    margin-top: 3rem;
+  }
+
+  .translator-card {
+    padding: 1.25rem;
+    margin: 1rem 0.5rem;
+  }
+
+  /* 3D model section */
+  .model-section {
+    margin-top: -5rem;
+    min-height: 300px;
+  }
+
+  .model-3d-container-large {
+    height: 450px;
+    margin: 0 0.25rem;
+  }
+
+  .text-overlay {
+    max-width: 110px;
+    max-height: 250px;
+    top: 55%;
+  }
+
+  .hieroglyph-text {
+    font-size: 2rem;
+  }
+
+  /* Video background optimization */
+  .video-background video {
+    object-position: center center;
+  }
+}
+
+/* Landscape mode adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+  .cartoucha-experience {
+    flex-direction: row;
+    padding: 1rem;
+    min-height: calc(100vh - 6rem);
+  }
+
+  .translator-section {
+    flex: 1;
+    max-width: 50%;
+  }
+
+  .model-section {
+    flex: 1;
+    min-height: auto;
+  }
+
+  .model-3d-container-large {
+    height: calc(100vh - 8rem);
+    max-height: 300px;
+  }
+
+  .translator-card {
+    padding: 1rem;
+  }
+}
+
+/* Touch interaction improvements */
+.model-3d-container-large {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  max-width: 800px;
+  touch-action: none;
+  /* Prevent default touch behaviors */
+  user-select: none;
+  /* Prevent text selection on touch */
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  /* Disable callout on iOS */
+}
+
+.model-3d-container-large canvas {
+  pointer-events: auto;
+  touch-action: none;
+  /* Prevent scrolling when touching the canvas */
+}
+
+/* Improve touch responsiveness on mobile */
+@media (max-width: 768px) {
+  .model-section {
+    /* Ensure touch events are properly handled */
+    overflow: hidden;
+    position: relative;
+  }
+
+  .model-3d-container-large {
+    /* Add subtle visual feedback for touch interaction */
+    transition: transform 0.1s ease-out;
+  }
+
+  /* Prevent body scroll when interacting with 3D model on mobile */
+  body.touch-active {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
   }
 }
