@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Mobile Zoom Prevention */
+@media (max-width: 768px) {
+
+  /* Prevent iOS zoom on input focus */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+    transform-origin: left top;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Allow pinch zoom on mobile */
+  html {
+    touch-action: manipulation;
+  }
+
+  /* Prevent zoom lock when keyboard appears */
+  body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+
+  /* Handle keyboard appearance on mobile */
+  .cartoucha-experience {
+    /* Use viewport units that adjust to keyboard */
+    min-height: 100vh;
+    min-height: 100dvh;
+    /* Dynamic viewport height */
+  }
+
+  /* Ensure input container doesn't get cut off */
+  .translator-card {
+    max-height: none;
+    overflow: visible;
+  }
+}
+
 /* Header and Footer Glass Blur Styles */
 .glass-header {
   position: fixed;
@@ -398,6 +436,7 @@ html {
 
 .translator-section {
   flex: 1;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -528,7 +567,8 @@ html {
   padding: 1rem 1.5rem;
   border: 2px solid rgba(251, 191, 36, 0.3);
   border-radius: 1rem;
-  font-size: 1rem;
+  font-size: 16px;
+  /* Prevent iOS zoom */
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
@@ -936,7 +976,8 @@ html {
   }
 
   .name-input {
-    font-size: 0.8rem;
+    font-size: 16px !important;
+    /* Prevent iOS zoom */
     padding: 0.5rem 1rem;
   }
 
@@ -984,7 +1025,7 @@ html {
 
   /* 3D model section */
   .model-section {
-    margin-top: -10rem;
+    margin-top: -8rem;
     min-height: 300px;
   }
 
