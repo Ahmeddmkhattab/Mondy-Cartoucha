@@ -785,7 +785,6 @@ html {
     0 0 24px rgba(255, 215, 0, 0.7),
     0 0 36px rgba(255, 215, 0, 0.5);
   filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.9));
-  animation: hieroglyphGlow 2.5s ease-in-out infinite alternate;
   letter-spacing: 0.2rem;
   text-align: center;
   line-height: 1.2;
@@ -833,28 +832,11 @@ html {
     0 0 20px rgba(255, 215, 0, 0.7),
     0 0 30px rgba(255, 215, 0, 0.5);
   filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.9));
-  animation: hieroglyphGlow 2.5s ease-in-out infinite alternate;
   letter-spacing: 0.05rem;
   text-align: center;
   line-height: 1;
   flex-shrink: 0;
   white-space: nowrap;
-}
-
-@keyframes hieroglyphGlow {
-  from {
-    text-shadow:
-      0 0 12px rgba(255, 215, 0, 0.9),
-      0 0 24px rgba(255, 215, 0, 0.7),
-      0 0 36px rgba(255, 215, 0, 0.5);
-  }
-
-  to {
-    text-shadow:
-      0 0 18px rgba(255, 215, 0, 1),
-      0 0 36px rgba(255, 215, 0, 0.9),
-      0 0 54px rgba(255, 215, 0, 0.7);
-  }
 }
 
 /* Mobile-first responsive adjustments */
@@ -1036,12 +1018,12 @@ html {
 
   .text-overlay {
     max-width: 110px;
-    max-height: 250px;
+    max-height: 265px;
     top: 55%;
   }
 
   .hieroglyph-text {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   /* Video background optimization */
