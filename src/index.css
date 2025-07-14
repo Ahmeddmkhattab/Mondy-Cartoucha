@@ -852,17 +852,9 @@ html {
 
 @media (max-width: 768px) {
 
-  /* Header adjustments */
+  /* Hide header on mobile */
   .glass-header {
-    padding: 0 0.5rem;
-  }
-
-  .glass-header-content {
-    height: 4rem;
-  }
-
-  .glass-header-title {
-    font-size: 2rem;
+    display: none;
   }
 
   /* Footer adjustments */
@@ -878,10 +870,11 @@ html {
     font-size: 0.75rem;
   }
 
-  /* Main content adjustments */
+  /* Main content adjustments - no header on mobile */
   .cartoucha-experience {
     padding: 1rem 0.75rem;
-    min-height: calc(100vh - 7.5rem);
+    min-height: calc(100vh - 2.5rem);
+    /* Only footer height */
   }
 
   .translator-card {
@@ -896,9 +889,17 @@ html {
 }
 
 @media (max-width: 640px) {
+
+  /* Header is hidden on mobile */
+  .glass-header {
+    display: none;
+  }
+
   .cartoucha-experience {
     padding: 1rem 0.5rem;
     gap: 0.5rem;
+    min-height: calc(100vh - 2.5rem);
+    /* Only footer height */
   }
 
   .model-3d-container-large {
@@ -958,20 +959,22 @@ html {
 /* Extra small devices (phones in portrait) */
 @media (max-width: 480px) {
 
-  /* Header becomes more compact */
-  .glass-header-title {
-    font-size: 1.5rem;
+  /* Header is hidden on mobile */
+  .glass-header {
+    display: none;
   }
 
-  .glass-header-content {
-    height: 2.5rem;
-    border-radius: 0 0 1rem 1rem;
-  }
-
-  /* Main layout adjustments */
+  /* Main layout adjustments - no header, more space */
   .cartoucha-experience {
     padding: 0.75rem 0.25rem;
-    margin-top: 1rem;
+    margin-top: 0;
+    /* Remove margin since no header */
+    min-height: calc(100vh - 2.5rem);
+    /* Only footer height */
+  }
+
+  .translator-section {
+    flex: 0;
   }
 
   .translator-card {
@@ -981,7 +984,7 @@ html {
 
   /* 3D model section */
   .model-section {
-    margin-top: -7rem;
+    margin-top: -10rem;
     min-height: 300px;
   }
 
