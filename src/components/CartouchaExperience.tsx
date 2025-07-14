@@ -116,7 +116,7 @@ const CartouchaExperience = () => {
                                     onBlur={() => setIsInputFocused(false)}
                                     placeholder="Type your name here..."
                                     className="name-input"
-                                    maxLength={50}
+                                    maxLength={7}
                                 />
                                 {inputName && (
                                     <button onClick={handleClearInput} className="clear-button" title="Clear input">×</button>
@@ -167,9 +167,19 @@ const CartouchaExperience = () => {
                     {/* Text Overlay - Vertical text on the model */}
                     {hieroglyphResult && (
                         <div className="text-overlay">
-                            <div className="vertical-text">
-                                {hieroglyphResult.split(' ').map((char, index) => (
-                                    <span key={index} className="hieroglyph-text">{char}</span>
+                            <div 
+                                className="vertical-text"
+                                style={{
+                                    gap: `${Math.max(0.2, 0.5 - (hieroglyphResult.split(' ').filter(char => char.trim()).length * 0.05))}rem`
+                                }}
+                            >
+                                {hieroglyphResult.split(' ').filter(char => char.trim()).map((char, index) => (
+                                    <span 
+                                        key={index} 
+                                        className="hieroglyph-text"
+                                    >
+                                        {char}
+                                    </span>
                                 ))}
                             </div>
                         </div>

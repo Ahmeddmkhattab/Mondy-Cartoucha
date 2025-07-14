@@ -427,47 +427,78 @@ html {
 /* Text Overlay on 3D Model */
 .text-overlay {
   position: absolute;
-  top: 45%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  height: 75%;
+  max-width: 220px;
+  max-height: 304px;
 }
 
 .vertical-text {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.3rem;
-  padding: 1rem 0;
+  justify-content: center;
+  padding: 0.5rem 0;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .text-char {
-  font-size: 2rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: #8B4513;
   text-shadow:
-    0 0 10px rgba(255, 215, 0, 0.8),
-    0 0 20px rgba(255, 215, 0, 0.6),
-    0 0 30px rgba(255, 215, 0, 0.4);
+    0 0 8px rgba(255, 215, 0, 0.8),
+    0 0 16px rgba(255, 215, 0, 0.6),
+    0 0 24px rgba(255, 215, 0, 0.4);
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8));
   animation: textGlow 2s ease-in-out infinite alternate;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.05rem;
+  line-height: 1;
+  flex-shrink: 1;
+}
+
+@keyframes textGlow {
+  from {
+    text-shadow:
+      0 0 10px rgba(255, 215, 0, 0.8),
+      0 0 20px rgba(255, 215, 0, 0.6),
+      0 0 30px rgba(255, 215, 0, 0.4);
+  }
+  to {
+    text-shadow:
+      0 0 15px rgba(255, 215, 0, 1),
+      0 0 30px rgba(255, 215, 0, 0.8),
+      0 0 45px rgba(255, 215, 0, 0.6);
+  }
 }
 
 .hieroglyph-text {
-  font-size: 2.5rem;
+  font-size: 1.6rem;
   font-weight: 400;
   color: #8B4513;
   text-shadow:
-    0 0 12px rgba(255, 215, 0, 0.9),
-    0 0 24px rgba(255, 215, 0, 0.7),
-    0 0 36px rgba(255, 215, 0, 0.5);
+    0 0 10px rgba(255, 215, 0, 0.9),
+    0 0 20px rgba(255, 215, 0, 0.7),
+    0 0 30px rgba(255, 215, 0, 0.5);
   filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.9));
   animation: hieroglyphGlow 2.5s ease-in-out infinite alternate;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.05rem;
   text-align: center;
-  line-height: 1.2;
+  line-height: 1;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 @keyframes hieroglyphGlow {
@@ -505,16 +536,14 @@ html {
     height: 400px;
   }
 
-  .text-char {
-    font-size: 1.5rem;
+  .text-overlay {
+    max-width: 180px;
+    max-height: 240px;
+    top: 60%;
   }
 
   .hieroglyph-text {
-    font-size: 2rem;
-  }
-
-  .text-overlay {
-    top: 42%;
+    font-size: 1.2rem;
   }
 }
 
@@ -527,21 +556,18 @@ html {
     height: 300px;
   }
 
-  .text-char {
-    font-size: 1.2rem;
-    gap: 0.3rem;
+  .text-overlay {
+    max-width: 130px;
+    max-height: 176px;
+    top: 60%;
   }
 
   .hieroglyph-text {
-    font-size: 1.5rem;
-  }
-
-  .text-overlay {
-    top: 40%;
+    font-size: 1rem;
   }
 
   .vertical-text {
-    gap: 0.2rem;
+    padding: 0.3rem 0;
   }
 }
 
