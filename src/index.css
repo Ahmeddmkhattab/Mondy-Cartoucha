@@ -511,7 +511,6 @@ html {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  width: 90%;
 }
 
 .input-label {
@@ -525,7 +524,7 @@ html {
 }
 
 .name-input {
-  width: 100%;
+  width: 90%;
   padding: 1rem 1.5rem;
   border: 2px solid rgba(251, 191, 36, 0.3);
   border-radius: 1rem;
@@ -982,7 +981,7 @@ html {
 
   /* 3D model section */
   .model-section {
-    margin-top: -5rem;
+    margin-top: -7rem;
     min-height: 300px;
   }
 
