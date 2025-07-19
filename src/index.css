@@ -775,20 +775,22 @@ html {
 /* Mobile responsiveness for symbol selection */
 @media (max-width: 640px) {
   .symbol-grid {
-    gap: 0.5rem;
+    gap: 0.4rem;
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .symbol-box {
-    padding: 0.5rem 0.5rem;
-    min-height: 2rem;
+    padding: 0.3rem 0.3rem;
+    min-height: 1.5rem;
+    border-radius: 0.6rem;
   }
 
   .symbol-hieroglyph {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .symbol-name {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 }
 
@@ -957,21 +959,66 @@ html {
 
   /* Main content adjustments - no header on mobile */
   .cartoucha-experience {
-    padding: 1rem 0.75rem;
+    padding: 0.5rem 0.75rem;
     min-height: calc(100vh - 2.5rem);
     /* Only footer height */
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .translator-section {
+    flex: 0 0 auto;
+    /* Don't grow, fixed size */
+    max-width: none;
+  }
+
+  .model-section {
+    flex: 1;
+    /* Take remaining space */
+    min-height: 0;
+    /* Allow it to shrink */
   }
 
   .translator-card {
-    padding: 1.5rem;
+    padding: 0.5rem;
     margin: 0 0.5rem;
     background: rgba(251, 191, 36, 0.25);
     border: 2px solid rgba(251, 191, 36, 0.4);
     box-shadow: 0 -25px 50px -12px rgba(251, 191, 36, 0.4);
   }
 
+  .translator-input-section {
+    margin-bottom: 0.5rem;
+  }
+
+  .input-group {
+    gap: 0.4rem;
+  }
+
+  .name-input {
+    padding: 0.5rem 1rem;
+    font-size: 16px !important;
+  }
+
+  .symbol-grid {
+    gap: 0.3rem;
+  }
+
+  .symbol-box {
+    padding: 0.3rem 0.2rem;
+    min-height: 1.5rem;
+  }
+
+  .symbol-hieroglyph {
+    font-size: 1.2rem;
+  }
+
+  .symbol-name {
+    font-size: 0.65rem;
+  }
+
   .model-3d-container-large {
-    height: 350px;
+    height: 450px;
     margin: 0 0.5rem;
   }
 }
@@ -984,14 +1031,60 @@ html {
   }
 
   .cartoucha-experience {
-    padding: 1rem 0.5rem;
-    gap: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    gap: 0.25rem;
     min-height: calc(100vh - 2.5rem);
     /* Only footer height */
+    flex-direction: column;
+  }
+
+  .translator-section {
+    flex: 0 0 auto;
+    /* Fixed size, don't grow */
+  }
+
+  .model-section {
+    flex: 1;
+    /* Take remaining space */
+    min-height: 0;
+  }
+
+  .translator-card {
+    padding: 0.4rem;
+    border-radius: 1rem;
+    background: rgba(251, 191, 36, 0.25);
+    border: 2px solid rgba(251, 191, 36, 0.4);
+    box-shadow: 0 -25px 50px -12px rgba(251, 191, 36, 0.4);
+  }
+
+  .translator-input-section {
+    margin-bottom: 0.4rem;
+  }
+
+  .input-group {
+    gap: 0.3rem;
+  }
+
+  .symbol-grid {
+    gap: 0.25rem;
+  }
+
+  .symbol-box {
+    padding: 0.25rem 0.15rem;
+    min-height: 1.3rem;
+    border-radius: 0.5rem;
+  }
+
+  .symbol-hieroglyph {
+    font-size: 1rem;
+  }
+
+  .symbol-name {
+    font-size: 0.6rem;
   }
 
   .model-3d-container-large {
-    height: 300px;
+    height: 400px;
   }
 
   .text-overlay {
@@ -1010,15 +1103,23 @@ html {
 
   /* Translator card mobile optimization */
   .translator-card {
-    padding: 1rem;
-    border-radius: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
     background: rgba(251, 191, 36, 0.25);
     border: 2px solid rgba(251, 191, 36, 0.4);
     box-shadow: 0 -25px 50px -12px rgba(251, 191, 36, 0.4);
   }
 
   .translator-header {
-    margin-bottom: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .translator-input-section {
+    margin-bottom: 0.5rem;
+  }
+
+  .input-group {
+    gap: 0.4rem;
   }
 
   .input-label,
