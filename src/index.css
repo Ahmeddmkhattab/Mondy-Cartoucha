@@ -928,7 +928,7 @@ html {
   }
 
   .hieroglyph-text {
-    font-size: 1.2rem;
+    font-size: 1.1rem; /* Base size for mobile, will be overridden by dynamic scaling */
   }
 }
 
@@ -1088,17 +1088,18 @@ html {
   }
 
   .text-overlay {
-    max-width: 130px;
-    max-height: 176px;
-    top: 65%;
+    max-width: 140px; /* Increased width for better scaling */
+    max-height: 200px; /* Increased height for more characters */
+    top: 63%; /* Slightly adjusted position */
   }
 
   .hieroglyph-text {
-    font-size: 1rem;
+    font-size: 0.95rem; /* Base size for smaller mobile, will be overridden by dynamic scaling */
   }
 
   .vertical-text {
-    padding: 0.3rem 0;
+    padding: 0.2rem 0; /* Reduced padding for more space */
+    justify-content: space-evenly; /* Better distribution of characters */
   }
 
   /* Translator card mobile optimization */
@@ -1187,13 +1188,13 @@ html {
   }
 
   .text-overlay {
-    max-width: 110px;
-    max-height: 265px;
-    top: 55%;
+    max-width: 120px; /* Adjusted for very small screens */
+    max-height: 280px; /* More height for 9 characters */
+    top: 53%; /* Better centering */
   }
 
   .hieroglyph-text {
-    font-size: 1.8rem;
+    font-size: 1.6rem; /* Base size for very small mobile, will be overridden by dynamic scaling */
   }
 }
 

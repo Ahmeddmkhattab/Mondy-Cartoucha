@@ -198,7 +198,7 @@ const CartouchaExperience = () => {
                                     onBlur={() => setIsInputFocused(false)}
                                     placeholder="Type your name here..."
                                     className="name-input"
-                                    maxLength={8}
+                                    maxLength={9}
                                 />
                                 {inputName && (
                                     <button onClick={handleClearInput} className="clear-button" title="Clear input">×</button>
@@ -269,17 +269,73 @@ const CartouchaExperience = () => {
                             <div
                                 className="vertical-text"
                                 style={{
-                                    gap: `${Math.max(0.2, 0.5 - (hieroglyphResult.split(' ').filter(char => char.trim()).length * 0.05))}rem`
+                                    gap: (() => {
+                                        const charCount = hieroglyphResult.split(' ').filter(char => char.trim()).length;
+                                        const isMobile = window.innerWidth <= 768;
+                                        
+                                        if (isMobile) {
+                                            // Mobile-specific gap calculation
+                                            if (charCount === 1) {
+                                                return '0rem'; // Single character - no gap needed
+                                            } else if (charCount <= 3) {
+                                                return '0.4rem'; // Good spacing for 2-3 chars
+                                            } else if (charCount <= 6) {
+                                                return '0.2rem'; // Tighter for 4-6 chars
+                                            } else {
+                                                return '0.1rem'; // Very tight for 7-9 chars
+                                            }
+                                        } else {
+                                            // Desktop - original calculation
+                                            return `${Math.max(0.1, 0.6 - (charCount * 0.06))}rem`;
+                                        }
+                                    })()
                                 }}
                             >
-                                {hieroglyphResult.split(' ').filter(char => char.trim()).map((char, index) => (
-                                    <span
-                                        key={index}
-                                        className="hieroglyph-text"
-                                    >
-                                        {char}
-                                    </span>
-                                ))}
+                                {hieroglyphResult.split(' ').filter(char => char.trim()).map((char, index) => {
+                                    const charCount = hieroglyphResult.split(' ').filter(char => char.trim()).length;
+                                    const isMobile = window.innerWidth <= 768;
+                                    
+                                    // Mobile-only dynamic scaling
+                                    if (isMobile) {
+                                        // Mobile responsive font sizing based on character count
+                                        let fontSize;
+                                        if (charCount === 1) {
+                                            // Single character - center and large
+                                            fontSize = window.innerWidth <= 480 ? 2.2 : 2.5;
+                                        } else if (charCount <= 3) {
+                                            // 2-3 characters - good size
+                                            fontSize = window.innerWidth <= 480 ? 1.8 : 2.0;
+                                        } else if (charCount <= 6) {
+                                            // 4-6 characters - medium size
+                                            fontSize = window.innerWidth <= 480 ? 1.3 : 1.5;
+                                        } else {
+                                            // 7-9 characters - smaller to fit all
+                                            fontSize = window.innerWidth <= 480 ? 1.0 : 1.2;
+                                        }
+                                        
+                                        return (
+                                            <span
+                                                key={index}
+                                                className="hieroglyph-text"
+                                                style={{
+                                                    fontSize: `${fontSize}rem`
+                                                }}
+                                            >
+                                                {char}
+                                            </span>
+                                        );
+                                    } else {
+                                        // Desktop - keep original behavior
+                                        return (
+                                            <span
+                                                key={index}
+                                                className="hieroglyph-text"
+                                            >
+                                                {char}
+                                            </span>
+                                        );
+                                    }
+                                })}
                             </div>
                         </div>
                     )}
