@@ -48,7 +48,7 @@ const CartouchaExperience = () => {
 
     // Egyptian symbols mapping
     const symbolMap = {
-        'Love': '𓆸',        // Lotus flower (corrected)
+        'Love': '𓆰',        // Lotus flower (corrected)
         'Luck': '𓆣',        // Sacred scarab beetle (corrected)
         'Protection': '𓂀',   // Eye of Horus
         'Long Life': '𓋹'     // Ankh
