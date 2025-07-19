@@ -290,7 +290,7 @@ const CartouchaExperience = () => {
                         <pointLight position={[0, 0, -5]} intensity={0.6} color="#ffd700" />
                         <pointLight position={[0, 8, 0]} intensity={0.5} color="#daa520" />
 
-                        <Model mousePosition={mousePosition} isLocked={isInputFocused || inputName.length > 0} />
+                        <Model mousePosition={mousePosition} isLocked={isInputFocused || inputName.length > 0 || selectedSymbols.length > 0} />
 
                         <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} enableDamping={false} />
                     </Canvas>
