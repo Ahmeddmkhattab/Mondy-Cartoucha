@@ -202,9 +202,16 @@ const CartouchaExperience = () => {
                 <div className="translator-card">
                     {/* Mobile Header - Only visible on mobile */}
                     <div className="mobile-header">
-                        <h1 className="mobile-cartoucha-title">
-                            Mondy's Bazzar
-                        </h1>
+                        <a 
+                            href="http://www.mondybazaar.com/site/pages/Default.aspx"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mobile-header-link"
+                        >
+                            <h1 className="mobile-cartoucha-title">
+                                Mondy's Bazzar
+                            </h1>
+                        </a>
                     </div>
                     
                     <div className="translator-input-section">

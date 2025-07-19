@@ -464,6 +464,15 @@ html {
   margin-bottom: 1rem;
 }
 
+.mobile-header-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.mobile-header-link:hover {
+  text-decoration: none;
+}
+
 .mobile-cartoucha-title {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   font-size: 2.5rem;
