@@ -67,15 +67,6 @@ const CartouchaExperience = () => {
         let name = inputName.toUpperCase()
             .replace(/C/g, "K").replace(/Q/g, "K").replace(/X/g, "KH").replace(/V/g, "F");
 
-        // Remove consecutive duplicate letters
-        let deduplicatedName = "";
-        for (let i = 0; i < name.length; i++) {
-            if (i === 0 || name[i] !== name[i - 1]) {
-                deduplicatedName += name[i];
-            }
-        }
-        name = deduplicatedName;
-
         let result = "";
         for (let i = 0; i < name.length; i++) {
             const pair = name.slice(i, i + 2);
