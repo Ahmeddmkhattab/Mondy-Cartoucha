@@ -448,6 +448,15 @@ html {
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 10px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.3)) drop-shadow(0 0 30px rgba(255, 215, 0, 0.2));
 }
 
+.header-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header-link:hover {
+  text-decoration: none;
+}
+
 #root {
   width: 100%;
   min-height: 100vh;
