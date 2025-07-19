@@ -203,7 +203,7 @@ const CartouchaExperience = () => {
                     {/* Mobile Header - Only visible on mobile */}
                     <div className="mobile-header">
                         <h1 className="mobile-cartoucha-title">
-                            Mondy's Cartoucha
+                            Mondy's Bazzar
                         </h1>
                     </div>
                     

@@ -10,7 +10,7 @@ const Header = () => {
                         className="header-link"
                     >
                         <h1 className="cartoucha-title glass-header-title">
-                            Mondy's Cartoucha
+                            Mondy's Bazzar
                         </h1>
                     </a>
                 </div>
