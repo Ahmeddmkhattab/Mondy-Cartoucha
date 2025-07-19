@@ -974,24 +974,9 @@ html {
 
 @media (max-width: 768px) {
 
-  /* Compact header on mobile */
+  /* Hide header on mobile */
   .glass-header {
-    display: block;
-    padding: 0 0.5rem;
-  }
-
-  .glass-header-content {
-    height: 2rem; /* Compact height */
-    background: rgba(251, 191, 36, 0.3);
-    backdrop-filter: blur(24px);
-    border-radius: 0 0 0.75rem 0.75rem;
-    box-shadow: 0 8px 25px -12px rgba(251, 191, 36, 0.4);
-    border: 2px solid rgba(251, 191, 36, 0.4);
-  }
-
-  .cartoucha-title {
-    font-size: 1.25rem; /* Compact title size */
-    filter: drop-shadow(1px 1px 2px rgba(70, 58, 2, 0.8));
+    display: none;
   }
 
   /* Footer adjustments */
@@ -1012,11 +997,11 @@ html {
     filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.6));
   }
 
-  /* Main content adjustments - compact header on mobile */
+  /* Main content adjustments - no header on mobile */
   .cartoucha-experience {
     padding: 0.5rem 0.75rem;
-    min-height: calc(100vh - 4.7rem);
-    /* Header (2rem) + Footer (2.2rem) + spacing (0.5rem) */
+    min-height: calc(100vh - 2.5rem);
+    /* Only footer height */
     flex-direction: column;
     gap: 0.5rem;
   }
@@ -1076,23 +1061,23 @@ html {
   }
 
   .model-3d-container-large {
-    height: 480px;
+    height: 500px;
     margin: 0 0.5rem;
   }
 }
 
 @media (max-width: 640px) {
 
-  /* Compact header maintained */
+  /* Header is hidden on mobile */
   .glass-header {
-    display: block;
+    display: none;
   }
 
   .cartoucha-experience {
     padding: 0.25rem 0.5rem;
     gap: 0.25rem;
-    min-height: calc(100vh - 4.7rem);
-    /* Header + Footer + spacing */
+    min-height: calc(100vh - 2.5rem);
+    /* Only footer height */
     flex-direction: column;
   }
 
@@ -1145,7 +1130,7 @@ html {
   }
 
   .model-3d-container-large {
-    height: 430px;
+    height: 450px;
   }
 
   .text-overlay {
@@ -1214,17 +1199,18 @@ html {
 /* Extra small devices (phones in portrait) */
 @media (max-width: 480px) {
 
-  /* Compact header maintained */
+  /* Header is hidden on mobile */
   .glass-header {
-    display: block;
+    display: none;
   }
 
-  /* Main layout adjustments - compact header */
+  /* Main layout adjustments - no header, more space */
   .cartoucha-experience {
     padding: 0.75rem 0.25rem;
     margin-top: 0;
-    min-height: calc(100vh - 4.7rem);
-    /* Header + Footer + spacing */
+    /* Remove margin since no header */
+    min-height: calc(100vh - 2.5rem);
+    /* Only footer height */
     flex-direction: column;
     gap: 0.5rem;
   }
@@ -1240,14 +1226,14 @@ html {
 
   /* 3D model section */
   .model-section {
-    min-height: 300px;
+    min-height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .model-3d-container-large {
-    height: 450px;
+    height: 500px;
     margin: 0 0.25rem;
   }
 
