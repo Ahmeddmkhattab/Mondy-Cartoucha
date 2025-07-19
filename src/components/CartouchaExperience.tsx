@@ -41,7 +41,7 @@ function Model({ mousePosition, isLocked }: ModelProps) {
 const CartouchaExperience = () => {
     const [inputName, setInputName] = useState('');
     const [hieroglyphResult, setHieroglyphResult] = useState('');
-    const [selectedSymbol, setSelectedSymbol] = useState<string | null>(null);
+    const [selectedSymbols, setSelectedSymbols] = useState<string[]>([]);
     const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
     const [isInputFocused, setIsInputFocused] = useState(false);
     const [isTouching, setIsTouching] = useState(false);
@@ -90,16 +90,16 @@ const CartouchaExperience = () => {
         return result;
     };
 
-    const updateHieroglyphResult = (name: string, symbol: string | null) => {
+    const updateHieroglyphResult = (name: string, symbols: string[]) => {
         const nameHieroglyphs = name.trim() ? transliterateToHieroglyphs(name) : '';
-        const symbolHieroglyph = symbol ? symbolMap[symbol as keyof typeof symbolMap] : '';
+        const symbolHieroglyphs = symbols.map(symbol => symbolMap[symbol as keyof typeof symbolMap]).join(' ');
 
-        if (nameHieroglyphs && symbolHieroglyph) {
-            return nameHieroglyphs + '  ︎ ' + symbolHieroglyph;
+        if (nameHieroglyphs && symbolHieroglyphs) {
+            return nameHieroglyphs + '  ︎ ' + symbolHieroglyphs;
         } else if (nameHieroglyphs) {
             return nameHieroglyphs;
-        } else if (symbolHieroglyph) {
-            return symbolHieroglyph;
+        } else if (symbolHieroglyphs) {
+            return symbolHieroglyphs;
         }
         return '';
     };
@@ -107,18 +107,20 @@ const CartouchaExperience = () => {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setInputName(value);
-        setHieroglyphResult(updateHieroglyphResult(value, selectedSymbol));
+        setHieroglyphResult(updateHieroglyphResult(value, selectedSymbols));
     };
 
     const handleSymbolSelect = (symbol: string) => {
-        const newSymbol = selectedSymbol === symbol ? null : symbol;
-        setSelectedSymbol(newSymbol);
-        setHieroglyphResult(updateHieroglyphResult(inputName, newSymbol));
+        const newSymbols = selectedSymbols.includes(symbol)
+            ? selectedSymbols.filter(s => s !== symbol) // Remove if already selected
+            : [...selectedSymbols, symbol]; // Add if not selected
+        setSelectedSymbols(newSymbols);
+        setHieroglyphResult(updateHieroglyphResult(inputName, newSymbols));
     };
 
     const handleClearInput = () => {
         setInputName('');
-        setSelectedSymbol(null);
+        setSelectedSymbols([]);
         setHieroglyphResult('');
     };
 
@@ -213,7 +215,7 @@ const CartouchaExperience = () => {
                                 <button
                                     key={symbol}
                                     onClick={() => handleSymbolSelect(symbol)}
-                                    className={`symbol-box ${selectedSymbol === symbol ? 'selected' : ''}`}
+                                    className={`symbol-box ${selectedSymbols.includes(symbol) ? 'selected' : ''}`}
                                 >
                                     <span className="symbol-hieroglyph">{symbolMap[symbol as keyof typeof symbolMap]}</span>
                                     <span className="symbol-name">{symbol}</span>

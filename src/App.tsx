@@ -2,16 +2,15 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CartouchaExperience from './components/CartouchaExperience';
-import cartouchaVideo from './assets/cartoucha-optimized.mp4';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time and wait for video to be ready
+    // Simulate loading time for papyrus background
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // 3 seconds loading time
+    }, 2000); // 2 seconds loading time
 
     return () => clearTimeout(timer);
   }, []);
@@ -26,21 +25,8 @@ function App() {
         </div>
       )}
 
-      {/* Video Background */}
-      <div className="video-background">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          onLoadedData={() => {
-            // Video is ready, but we still wait for the timer
-          }}
-        >
-          <source src={cartouchaVideo} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+      {/* Papyrus Background */}
+      <div className="papyrus-background"></div>
 
       {/* Main Content */}
       <div className={`min-h-screen flex flex-col transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
