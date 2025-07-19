@@ -104,18 +104,44 @@ const CartouchaExperience = () => {
         return '';
     };
 
+    // Function to count total characters displayed in cartouche
+    const getTotalCharacterCount = () => {
+        if (!hieroglyphResult) return 0;
+        return hieroglyphResult.split(' ').filter(char => char.trim()).length;
+    };
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        setInputName(value);
-        setHieroglyphResult(updateHieroglyphResult(value, selectedSymbols));
+        const testResult = updateHieroglyphResult(value, selectedSymbols);
+        const testCharCount = testResult.split(' ').filter(char => char.trim()).length;
+        
+        // Prevent input if it would exceed 9 characters
+        if (testCharCount <= 9) {
+            setInputName(value);
+            setHieroglyphResult(testResult);
+        }
     };
 
     const handleSymbolSelect = (symbol: string) => {
-        const newSymbols = selectedSymbols.includes(symbol)
-            ? selectedSymbols.filter(s => s !== symbol) // Remove if already selected
-            : [...selectedSymbols, symbol]; // Add if not selected
-        setSelectedSymbols(newSymbols);
-        setHieroglyphResult(updateHieroglyphResult(inputName, newSymbols));
+        const currentCharCount = getTotalCharacterCount();
+        
+        if (selectedSymbols.includes(symbol)) {
+            // Allow removal of already selected symbols
+            const newSymbols = selectedSymbols.filter(s => s !== symbol);
+            setSelectedSymbols(newSymbols);
+            setHieroglyphResult(updateHieroglyphResult(inputName, newSymbols));
+        } else {
+            // Check if adding this symbol would exceed the limit
+            const testSymbols = [...selectedSymbols, symbol];
+            const testResult = updateHieroglyphResult(inputName, testSymbols);
+            const testCharCount = testResult.split(' ').filter(char => char.trim()).length;
+            
+            if (testCharCount <= 9) {
+                setSelectedSymbols(testSymbols);
+                setHieroglyphResult(testResult);
+            }
+            // If limit would be exceeded, do nothing (button click is ignored)
+        }
     };
 
     const handleClearInput = () => {
@@ -187,7 +213,9 @@ const CartouchaExperience = () => {
                 <div className="translator-card">
                     <div className="translator-input-section">
                         <div className="input-group">
-                            <label htmlFor="name-input" className="input-label">Enter your name</label>
+                            <label htmlFor="name-input" className="input-label">
+                                Enter your name {getTotalCharacterCount() >= 9 && <span style={{ color: '#DAA520', fontSize: '0.8rem' }}>(9/9 characters - limit reached)</span>}
+                            </label>
                             <div className="input-container">
                                 <input
                                     id="name-input"
@@ -196,9 +224,13 @@ const CartouchaExperience = () => {
                                     onChange={handleInputChange}
                                     onFocus={() => setIsInputFocused(true)}
                                     onBlur={() => setIsInputFocused(false)}
-                                    placeholder="Type your name here..."
-                                    className="name-input"
+                                    placeholder={getTotalCharacterCount() >= 9 ? "Character limit reached" : "Type your name here..."}
+                                    className={`name-input ${getTotalCharacterCount() >= 9 ? 'input-disabled' : ''}`}
                                     maxLength={9}
+                                    style={{
+                                        opacity: getTotalCharacterCount() >= 9 ? 0.6 : 1,
+                                        cursor: getTotalCharacterCount() >= 9 ? 'not-allowed' : 'text'
+                                    }}
                                 />
                                 {inputName && (
                                     <button onClick={handleClearInput} className="clear-button" title="Clear input">×</button>
@@ -211,16 +243,27 @@ const CartouchaExperience = () => {
                     <div className="input-group">
                         <label className="input-label">Choose a blessing</label>
                         <div className="symbol-grid">
-                            {Object.keys(symbolMap).map((symbol) => (
-                                <button
-                                    key={symbol}
-                                    onClick={() => handleSymbolSelect(symbol)}
-                                    className={`symbol-box ${selectedSymbols.includes(symbol) ? 'selected' : ''}`}
-                                >
-                                    <span className="symbol-hieroglyph">{symbolMap[symbol as keyof typeof symbolMap]}</span>
-                                    <span className="symbol-name">{symbol}</span>
-                                </button>
-                            ))}
+                            {Object.keys(symbolMap).map((symbol) => {
+                                const isSelected = selectedSymbols.includes(symbol);
+                                const isDisabled = !isSelected && getTotalCharacterCount() >= 9;
+                                
+                                return (
+                                    <button
+                                        key={symbol}
+                                        onClick={() => handleSymbolSelect(symbol)}
+                                        className={`symbol-box ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`}
+                                        disabled={isDisabled}
+                                        style={{
+                                            opacity: isDisabled ? 0.4 : 1,
+                                            cursor: isDisabled ? 'not-allowed' : 'pointer'
+                                        }}
+                                        title={isDisabled ? 'Character limit reached (9/9)' : `Select ${symbol} symbol`}
+                                    >
+                                        <span className="symbol-hieroglyph">{symbolMap[symbol as keyof typeof symbolMap]}</span>
+                                        <span className="symbol-name">{symbol}</span>
+                                    </button>
+                                );
+                            })}
                         </div>
                     </div>
 

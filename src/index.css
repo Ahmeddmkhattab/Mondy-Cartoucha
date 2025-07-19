@@ -757,6 +757,31 @@ html {
   text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
 }
 
+.symbol-box.disabled {
+  background: rgba(139, 69, 19, 0.1) !important;
+  border-color: rgba(139, 69, 19, 0.2) !important;
+  cursor: not-allowed !important;
+}
+
+.symbol-box.disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  background: rgba(139, 69, 19, 0.1) !important;
+  border-color: rgba(139, 69, 19, 0.2) !important;
+}
+
+.symbol-box.disabled .symbol-hieroglyph,
+.symbol-box.disabled .symbol-name {
+  color: rgba(139, 69, 19, 0.4) !important;
+  text-shadow: none !important;
+}
+
+.input-disabled {
+  background: rgba(139, 69, 19, 0.05) !important;
+  border-color: rgba(139, 69, 19, 0.2) !important;
+  color: rgba(139, 69, 19, 0.5) !important;
+}
+
 @keyframes symbolGlow {
   from {
     text-shadow:
@@ -924,7 +949,7 @@ html {
   .text-overlay {
     max-width: 180px;
     max-height: 240px;
-    top: 63%;
+    top: 68%; /* Moved down for better character visibility */
   }
 
   .hieroglyph-text {
@@ -1090,7 +1115,7 @@ html {
   .text-overlay {
     max-width: 140px; /* Increased width for better scaling */
     max-height: 200px; /* Increased height for more characters */
-    top: 63%; /* Slightly adjusted position */
+    top: 68%; /* Moved down for better character visibility */
   }
 
   .hieroglyph-text {
@@ -1190,7 +1215,7 @@ html {
   .text-overlay {
     max-width: 120px; /* Adjusted for very small screens */
     max-height: 280px; /* More height for 9 characters */
-    top: 53%; /* Better centering */
+    top: 58%; /* Moved down for better visibility of all characters */
   }
 
   .hieroglyph-text {
