@@ -200,6 +200,13 @@ const CartouchaExperience = () => {
             {/* Left Side - Hieroglyph Translator */}
             <div className="translator-section">
                 <div className="translator-card">
+                    {/* Mobile Header - Only visible on mobile */}
+                    <div className="mobile-header">
+                        <h1 className="mobile-cartoucha-title">
+                            Mondy's Cartoucha
+                        </h1>
+                    </div>
+                    
                     <div className="translator-input-section">
                         <div className="input-group">
                             <label htmlFor="name-input" className="input-label">
