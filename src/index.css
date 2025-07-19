@@ -523,7 +523,7 @@ html {
 /* Text Overlay on 3D Model */
 .text-overlay {
   position: absolute;
-  top: 55%;
+  top: 58%;
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
@@ -924,7 +924,7 @@ html {
   .text-overlay {
     max-width: 180px;
     max-height: 240px;
-    top: 60%;
+    top: 63%;
   }
 
   .hieroglyph-text {
@@ -1090,7 +1090,7 @@ html {
   .text-overlay {
     max-width: 130px;
     max-height: 176px;
-    top: 60%;
+    top: 65%;
   }
 
   .hieroglyph-text {
