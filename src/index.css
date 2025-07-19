@@ -352,8 +352,8 @@ body {
   scroll-behavior: smooth;
   overflow-x: hidden;
   /* Hide horizontal scrollbar */
-  background: #f4e8c8;
-  /* Simple cream/beige base color like the photo */
+  background: #f5e9a8;
+  /* More yellow papyrus base color while keeping it natural */
   background-image: 
     /* Very subtle fiber texture */
     repeating-linear-gradient(0deg, 
