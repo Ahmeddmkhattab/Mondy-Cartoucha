@@ -453,6 +453,21 @@ html {
 }
 
 
+/* Header link styling */
+.header-link {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.header-link:hover {
+  text-decoration: none;
+}
+
+.header-link:hover .cartoucha-title {
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 10px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.3)) drop-shadow(0 0 30px rgba(255, 215, 0, 0.2));
+}
+
 /* Option 2: Gold gradient without black stroke (Current) */
 .cartoucha-title {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
@@ -959,9 +974,24 @@ html {
 
 @media (max-width: 768px) {
 
-  /* Hide header on mobile */
+  /* Compact header on mobile */
   .glass-header {
-    display: none;
+    display: block;
+    padding: 0 0.5rem;
+  }
+
+  .glass-header-content {
+    height: 2rem; /* Compact height */
+    background: rgba(251, 191, 36, 0.3);
+    backdrop-filter: blur(24px);
+    border-radius: 0 0 0.75rem 0.75rem;
+    box-shadow: 0 8px 25px -12px rgba(251, 191, 36, 0.4);
+    border: 2px solid rgba(251, 191, 36, 0.4);
+  }
+
+  .cartoucha-title {
+    font-size: 1.25rem; /* Compact title size */
+    filter: drop-shadow(1px 1px 2px rgba(70, 58, 2, 0.8));
   }
 
   /* Footer adjustments */
@@ -982,11 +1012,11 @@ html {
     filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.6));
   }
 
-  /* Main content adjustments - no header on mobile */
+  /* Main content adjustments - compact header on mobile */
   .cartoucha-experience {
     padding: 0.5rem 0.75rem;
-    min-height: calc(100vh - 2.5rem);
-    /* Only footer height */
+    min-height: calc(100vh - 4.7rem);
+    /* Header (2rem) + Footer (2.2rem) + spacing (0.5rem) */
     flex-direction: column;
     gap: 0.5rem;
   }
@@ -1050,16 +1080,16 @@ html {
 
 @media (max-width: 640px) {
 
-  /* Header is hidden on mobile */
+  /* Compact header maintained */
   .glass-header {
-    display: none;
+    display: block;
   }
 
   .cartoucha-experience {
     padding: 0.25rem 0.5rem;
     gap: 0.25rem;
-    min-height: calc(100vh - 2.5rem);
-    /* Only footer height */
+    min-height: calc(100vh - 4.7rem);
+    /* Header + Footer + spacing */
     flex-direction: column;
   }
 
@@ -1178,18 +1208,17 @@ html {
 /* Extra small devices (phones in portrait) */
 @media (max-width: 480px) {
 
-  /* Header is hidden on mobile */
+  /* Compact header maintained */
   .glass-header {
-    display: none;
+    display: block;
   }
 
-  /* Main layout adjustments - no header, more space */
+  /* Main layout adjustments - compact header */
   .cartoucha-experience {
     padding: 0.75rem 0.25rem;
     margin-top: 0;
-    /* Remove margin since no header */
-    min-height: calc(100vh - 2.5rem);
-    /* Only footer height */
+    min-height: calc(100vh - 4.7rem);
+    /* Header + Footer + spacing */
   }
 
   .translator-section {

@@ -123,8 +123,6 @@ const CartouchaExperience = () => {
     };
 
     const handleSymbolSelect = (symbol: string) => {
-        const currentCharCount = getTotalCharacterCount();
-        
         if (selectedSymbols.includes(symbol)) {
             // Allow removal of already selected symbols
             const newSymbols = selectedSymbols.filter(s => s !== symbol);
