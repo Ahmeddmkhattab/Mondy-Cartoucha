@@ -64,7 +64,7 @@ const CartouchaExperience = () => {
         };
 
         const digraphs = ["KH", "SH", "CH", "PH", "TH"];
-        let name = inputName.toUpperCase()
+        const name = inputName.toUpperCase()
             .replace(/C/g, "K").replace(/Q/g, "K").replace(/X/g, "KH").replace(/V/g, "F");
 
         let result = "";

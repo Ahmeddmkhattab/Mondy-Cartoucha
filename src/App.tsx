@@ -26,20 +26,21 @@ function App() {
       )}
 
       {/* Papyrus Background */}
-      <div className="papyrus-background"></div>
+      <div className="papyrus-background">
 
-      {/* Main Content */}
-      <div className={`min-h-screen flex flex-col transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
-        <Header />
+        {/* Main Content */}
+        <div className={`min-h-screen flex flex-col transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+          <Header />
 
-        {/* Cartoucha Experience - Integrated translator and 3D model */}
-        {!isLoading && (
-          <main className="flex-1">
-            <CartouchaExperience />
-          </main>
-        )}
+          {/* Cartoucha Experience - Integrated translator and 3D model */}
+          {!isLoading && (
+            <main className="flex-1">
+              <CartouchaExperience />
+            </main>
+          )}
 
-        <Footer />
+          <Footer />
+        </div>
       </div>
     </>
   );
